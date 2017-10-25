@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Limit Input</title>
+    <script src="https://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js">
+    </script>
+    
+</head>
+<body>
+    <textarea maxlength="2" onkeyup="return ismaxlength(this)"></textarea>
+
+    <input maxlength="2" class="sf-input-limit" />
+    <script>
+        function ismaxlength(obj) {
+            var mlength = obj.getAttribute ? parseInt(obj.getAttribute("maxlength")) : ""
+            if (obj.getAttribute && obj.value.length > mlength)
+                obj.value = obj.value.substring(0, mlength)
+        }
+
+        $(".sf-input-limit").on("keyup", function () {
+            var _MAXLENGTH = $(this).attr("maxlength");
+            if (_MAXLENGTH != undefined && $(this).val().length > _MAXLENGTH) {
+                var _input = $(this).val();
+                $(this).val(_input.substring(0, _MAXLENGTH));
+            }
+        })
+    </script>
+</body>
+</html>
